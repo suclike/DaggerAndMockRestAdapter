@@ -1,14 +1,23 @@
 package ciriti.retrofitmockserver.fragment;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import javax.inject.Inject;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import ciriti.retrofitmockserver.R;
+import ciriti.retrofitmockserver.api.ApiService;
 
 
 /**
@@ -30,6 +39,21 @@ public class FragUsers extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    @InjectView(R.id.resp)
+    TextView responseTv;
+
+    @InjectView(R.id.switch1)
+    SwitchCompat switchCompat;
+
+    @InjectView(R.id.progressBar)
+    ProgressBar progressBar;
+
+    @Inject
+    ApiService apiService;
+
+    @Inject
+    SharedPreferences sharedPreferences;
 
     /**
      * Use this factory method to create a new instance of
@@ -70,7 +94,9 @@ public class FragUsers extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_frag_user_list, container, false);
+        View view  = inflater.inflate(R.layout.fragment_frag_user_list, container, false);
+        ButterKnife.inject(this, view);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

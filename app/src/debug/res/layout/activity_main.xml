@@ -33,23 +33,23 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <ScrollView
+    <scrollview
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/divider">
 
-        <TextView
+        <textview
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textappearance="?android:attr/textappearancemedium"
             android:id="@+id/resp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true" />
+            android:layout_alignparentright="true"
+            android:layout_alignparentend="true"
+            android:layout_alignparentleft="true"
+            android:layout_alignparentstart="true"
+            android:layout_alignparentbottom="true" />
 
-    </ScrollView>
+    </scrollview>
 
     <Button
         style="?android:attr/buttonStyleSmall"
