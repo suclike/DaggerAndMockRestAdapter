@@ -2,7 +2,6 @@ package ciriti.retrofitmockserver;
 
 import android.app.Application;
 
-import ciriti.retrofitmockserver.component.ApiComponent;
 import ciriti.retrofitmockserver.component.DaggerApiComponent;
 import ciriti.retrofitmockserver.component.ParentApiComponent;
 import ciriti.retrofitmockserver.module.AppModule;

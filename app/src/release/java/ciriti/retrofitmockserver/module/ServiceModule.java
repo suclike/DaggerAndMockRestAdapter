@@ -2,6 +2,7 @@ package ciriti.retrofitmockserver.module;
 
 import javax.inject.Singleton;
 
+import ciriti.retrofitmockserver.Constats;
 import ciriti.retrofitmockserver.api.ApiService;
 import dagger.Module;
 import dagger.Provides;
@@ -16,11 +17,9 @@ import retrofit.RestAdapter;
 @Module(includes = {ApiModule.class})
 public class ServiceModule {
 
-    public static final String URL_ENDPOINT = "https://api.stackexchange.com";
-
     @Provides
     Endpoint provideEndpoint(){
-        return Endpoints.newFixedEndpoint(URL_ENDPOINT);
+        return Endpoints.newFixedEndpoint(Constats.URL_ENDPOINT);
     }
 
     @Provides

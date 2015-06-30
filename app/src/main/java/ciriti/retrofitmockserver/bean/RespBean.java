@@ -45,7 +45,7 @@ public class RespBean {
         @Expose
         private Integer lastAccessDate;
         @Expose
-        public Integer age;
+        public String age;
         @SerializedName("reputation_change_year")
         @Expose
         private Integer reputationChangeYear;
@@ -87,7 +87,7 @@ public class RespBean {
         public String profileImage;
         @SerializedName("display_name")
         @Expose
-        public String displayName;
+        public String displayName = "";
 
         @Data
         public static class BadgeCounts {

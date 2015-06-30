@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 
 import java.util.Collections;
 
+import ciriti.retrofitmockserver.Constats;
 import ciriti.retrofitmockserver.bean.RespBean;
 import retrofit.Callback;
 import retrofit.client.Response;
@@ -23,7 +24,7 @@ public class MockService implements  ApiService{
         @Override
         public void getUsers(@Query("pagesize") int numItems, Callback<RespBean> callback) {
                 RespBean obj = new Gson().fromJson(DATA, RespBean.class);
-                Response response = new Response(Api.URL_ENDPOINT,
+                Response response = new Response(Constats.URL_ENDPOINT,
                         200,
                         "nothing",
                         Collections.EMPTY_LIST,

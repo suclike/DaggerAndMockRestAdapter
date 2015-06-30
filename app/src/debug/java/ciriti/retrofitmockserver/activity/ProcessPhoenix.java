@@ -16,7 +16,8 @@ import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 /**
- * Taken by Jake Wharton's project u2020
+ * Taken by Jake Wharton's project u2020,
+ * thanks Jake!!!
  * https://github.com/JakeWharton/u2020
  */
 public class ProcessPhoenix extends Activity {

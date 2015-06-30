@@ -4,8 +4,6 @@ import android.content.SharedPreferences;
 
 import javax.inject.Singleton;
 
-import ciriti.retrofitmockserver.App;
-import ciriti.retrofitmockserver.api.Api;
 import ciriti.retrofitmockserver.api.ApiService;
 import ciriti.retrofitmockserver.api.MockService;
 import dagger.Module;

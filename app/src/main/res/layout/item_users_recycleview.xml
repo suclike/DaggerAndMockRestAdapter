@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:clickable="true"
+    android:background="@drawable/selector_recycle_item">
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:scaleType="centerCrop"
         android:id="@+id/item_profile_image"
-        android:background="#ff0000"
+        android:src="@drawable/placeholder_thumb"
         android:layout_alignParentTop="true"
         android:layout_marginRight="10dp"
         android:layout_alignParentLeft="true"
@@ -41,6 +43,5 @@
         android:textSize="14sp"
         android:maxLines="3"
         android:ellipsize="end"
-        tools:text="31"
-        />
+        tools:text="31"/>
 </ciriti.retrofitmockserver.widget.RecycleItemLayout>

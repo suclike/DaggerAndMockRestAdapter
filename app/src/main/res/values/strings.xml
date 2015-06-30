@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">RetrofitMockServer</string>
+    <string name="loading">Loading...</string>
 
     <string name="mock_server">Would you use mock server?</string>
     <string name="action_settings">Settings</string>
-    <string name="release_text">Production Enviroment</string>
+    <string name="release_text">Release Production</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

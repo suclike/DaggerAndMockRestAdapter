@@ -27,6 +27,8 @@ public class RecycleItemLayout extends RelativeLayout {
     @InjectView(R.id.item_profile_anni)
     TextView userAnni;
 
+    public RespBean.User user;
+
     public RecycleItemLayout(Context context) {
         super(context);
     }
@@ -46,6 +48,7 @@ public class RecycleItemLayout extends RelativeLayout {
     }
 
     public void bindData(RespBean.User user){
+        this.user = user;
         Picasso.with(getContext()).load(user.profileImage).into(userImage);
         username.setText(user.displayName);
         userAnni.setText(user.age);
