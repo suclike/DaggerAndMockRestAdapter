@@ -57,4 +57,19 @@ Then we have to add the dependencies about dagger (library, compiler and supplem
 
 What we're creating is a component which contains few modules, in this sample we don't care about the Scope, we'll talk about it in the next article.
 
+```java
+@Singleton
+@Component(modules = {
+        AppModule.class,
+        SharedPrefModule.class,
+        ServiceModule.class
+}
+)
+public interface ApplicationComponent {
+    void inject(FragUsers fragUsers);
+}
+
+```
+A component is an interface annotated with @Component keyword; the method inject(...) tell to app where 
+
 ## Under construction
