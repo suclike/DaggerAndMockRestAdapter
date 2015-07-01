@@ -192,6 +192,6 @@ To get more details please take a look to the source code.
 
 ##Screenshots
 
-![Component](art/debug_mock.png)![Component](art/debug.png)![Component](art/live.png)
+![Component](art/debug_mock.png)  ![Component](art/debug.png)  ![Component](art/live_.png)
 
 See you next article!!
