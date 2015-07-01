@@ -190,4 +190,8 @@ Now we can get our instance of service where previously we've declared the injec
 
 To get more details please take a look to the source code. 
 
+##Screenshots
+
+![Component](art/debug_mock.png)![Component](art/debug.png)![Component](art/live.png)
+
 See you next article!!
