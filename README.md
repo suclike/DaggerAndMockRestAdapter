@@ -11,10 +11,32 @@ Let's start!
 
 ##Dagger 2
 
+###Overview
+
 Dagger 2 is one of the best library ever created. It was built by Square and it is based on the [Dependency injection pattern](https://en.wikipedia.org/wiki/Dependency_injection).
 
 The purpose of this library is to create a Directed Acyclic object Graph (DAGger), at runtime, with the instances of your android application during the startup, this graph will be use to get objects inserted to use them across your app.
 
 In this way you can think to your app like a set of component who are built by other little specialized parts (the modules).
 
+###Setup
+
+In your gradle file add you should add the following lines:
+```gradle
+apply plugin: 'com.neenbedankt.android-apt'
+
+buildscript {
+    repositories {
+        jcenter()
+
+    }
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+    }
+}
+repositories {
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+}
+```
+First line is the plugin who assists in working with annotation processors in combination with Android Studio.
 ## Under construction
