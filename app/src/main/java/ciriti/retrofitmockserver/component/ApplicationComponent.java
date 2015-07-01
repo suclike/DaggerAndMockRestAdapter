@@ -8,10 +8,15 @@ import ciriti.retrofitmockserver.module.SharedPrefModule;
 import dagger.Component;
 
 /**
- * Created by ciriti on 28/06/15.
+ * Created by carmelo.iriti on 01/07/2015.
  */
 @Singleton
-@Component(modules = {AppModule.class, SharedPrefModule.class, ServiceModule.class})
-public interface ApiComponent extends ParentApiComponent{
-
+@Component(modules = {
+        AppModule.class,
+        SharedPrefModule.class,
+        ServiceModule.class
 }
+)
+public interface ApplicationComponent  extends ParentApiComponent{
+}
+

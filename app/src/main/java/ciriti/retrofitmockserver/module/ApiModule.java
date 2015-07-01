@@ -2,13 +2,10 @@ package ciriti.retrofitmockserver.module;
 
 import android.util.Log;
 
-import com.jakewharton.byteunits.DecimalByteUnit;
 import com.squareup.okhttp.Cache;
 import com.squareup.okhttp.OkHttpClient;
 
 import java.io.File;
-
-import javax.inject.Singleton;
 
 import ciriti.retrofitmockserver.App;
 import dagger.Module;
@@ -23,12 +20,12 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  * Created by ciriti on 28/06/15.
  */
 @Module
-@Singleton
+//@Singleton
 public class ApiModule {
 
     static final int DISK_CACHE_SIZE = 50 * 1024 * 1024; // 50MB
 
-    @Singleton
+//    @Singleton
     @Provides
     public RestAdapter provideRestAdapter(OkHttpClient okHttpClient, Endpoint endpoint){
         Log.i("", "");
@@ -46,7 +43,7 @@ public class ApiModule {
      * https://it.wikipedia.org/wiki/SPDY
      * @return
      */
-    @Singleton
+//    @Singleton
     @Provides
     OkHttpClient provideClient(App app){
 

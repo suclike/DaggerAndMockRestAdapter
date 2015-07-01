@@ -19,11 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.ProcessPhoenix"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:process=":phoenix"
-            />
+        <!--<activity-->
+            <!--android:name=".activity.ProcessPhoenix"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
+            <!--android:process=":phoenix"-->
+            <!--/>-->
     </application>
 
 </manifest>

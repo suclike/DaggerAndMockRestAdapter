@@ -54,6 +54,7 @@ public class FragUsers extends Fragment implements SharedPreferences.OnSharedPre
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    public static String IS_DIALOG_IN_PROGRESS = "isDialogInProgress";
 
     /**
      * not jet used
@@ -79,6 +80,7 @@ public class FragUsers extends Fragment implements SharedPreferences.OnSharedPre
     SharedPreferences sharedPreferences;
 
     MaterialDialog dialog;
+
 
     /**
      * Use this factory method to create a new instance of
@@ -114,7 +116,8 @@ public class FragUsers extends Fragment implements SharedPreferences.OnSharedPre
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        ((App)getActivity().getApplication()).getApiComponent().inject(this);
+        ((App) getActivity().getApplication()).getApiComponent().inject(this);
+
 
         dialog = new MaterialDialog.Builder(getActivity())
                 .content(R.string.loading)
@@ -122,6 +125,14 @@ public class FragUsers extends Fragment implements SharedPreferences.OnSharedPre
                 .build();
         // create the adapter
         usersRecycleViewAdapter = new UsersRecycleViewAdapter();
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if(savedInstanceState != null){
+            if(savedInstanceState.getBoolean(IS_DIALOG_IN_PROGRESS, false))dialog.show();
+        }
     }
 
     @Override
@@ -134,6 +145,14 @@ public class FragUsers extends Fragment implements SharedPreferences.OnSharedPre
     public void onPause() {
         super.onPause();
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean(IS_DIALOG_IN_PROGRESS, dialog.isShowing());
+        dialog.dismiss();
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -188,6 +207,12 @@ public class FragUsers extends Fragment implements SharedPreferences.OnSharedPre
     }
 
     @Override
+    public void onStop() {
+        super.onStop();
+        dialog.dismiss();
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
@@ -196,12 +221,12 @@ public class FragUsers extends Fragment implements SharedPreferences.OnSharedPre
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(key.equals(ServiceModule.HAS_MOCK))
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ProcessPhoenix.triggerRebirth(getActivity());
-            }
-        }, 500);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ProcessPhoenix.triggerRebirth(getActivity());
+                }
+            }, 500);
 
     }
 
@@ -222,7 +247,11 @@ public class FragUsers extends Fragment implements SharedPreferences.OnSharedPre
 
     @OnClick(R.id.button)
     public void click(){
+        if(dialog.isShowing())
+            return;
+
         dialog.show();
+
         apiService.getUsers(100, new Callback<RespBean>() {
             @Override
             public void success(RespBean respBean, Response response) {

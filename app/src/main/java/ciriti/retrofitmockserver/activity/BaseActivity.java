@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 
-import ciriti.retrofitmockserver.Constats;
+import ciriti.retrofitmockserver.BuildConfig;
 
 /**
  * Created by ciriti on 28/06/15.
@@ -14,7 +14,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if (Constats.DEVELOPER_MODE) {
+        if (BuildConfig.DEBUG) {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                     .detectDiskReads()
                     .detectDiskWrites()
@@ -30,9 +30,7 @@ public class BaseActivity extends AppCompatActivity {
         }
 
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setHomeButtonEnabled(true);
-//        getSupportActionBar().setLogo(R.mipmap.ic_launcher);
 
-
+        getSupportActionBar().setHomeButtonEnabled(false);
     }
 }

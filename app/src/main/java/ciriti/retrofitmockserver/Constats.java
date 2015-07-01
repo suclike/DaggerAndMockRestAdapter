@@ -5,6 +5,6 @@ package ciriti.retrofitmockserver;
  */
 public class Constats {
 
-    public static boolean DEVELOPER_MODE = true;
     public static final String URL_ENDPOINT = "https://api.stackexchange.com";
+
 }

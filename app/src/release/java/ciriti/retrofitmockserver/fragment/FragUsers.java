@@ -48,6 +48,7 @@ public class FragUsers extends Fragment{
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    public static String IS_DIALOG_IN_PROGRESS = "isDialogInProgress";
 
     /**
      * not jet used
@@ -116,6 +117,14 @@ public class FragUsers extends Fragment{
     }
 
     @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if(savedInstanceState != null){
+            if(savedInstanceState.getBoolean(IS_DIALOG_IN_PROGRESS, false))dialog.show();
+        }
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
     }
@@ -123,6 +132,14 @@ public class FragUsers extends Fragment{
     @Override
     public void onPause() {
         super.onPause();
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean(IS_DIALOG_IN_PROGRESS, dialog.isShowing());
+        dialog.dismiss();
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -169,6 +186,12 @@ public class FragUsers extends Fragment{
     }
 
     @Override
+    public void onStop() {
+        super.onStop();
+        dialog.dismiss();
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
@@ -191,7 +214,11 @@ public class FragUsers extends Fragment{
 
     @OnClick(R.id.button)
     public void click(){
+        if(dialog.isShowing())
+            return;
+
         dialog.show();
+
         apiService.getUsers(100, new Callback<RespBean>() {
             @Override
             public void success(RespBean respBean, Response response) {

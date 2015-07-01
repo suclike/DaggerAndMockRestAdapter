@@ -1,6 +1,7 @@
 package ciriti.retrofitmockserver.widget;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -63,8 +64,15 @@ public class UsersRecycleViewAdapter extends EmptyRecyclerView.Adapter<UsersRecy
     }
 
     public void addData(List<RespBean.User> usersList){
-        int start = usersList.size();
+
+        Log.i(UsersRecycleViewAdapter.class.getName(),"adapterusersList[" + usersList.size() +"]");
+        Log.i(UsersRecycleViewAdapter.class.getName(),"adapterusers[" + users.size() +"]");
+
+        int indexStart = users.size();
         users.addAll(usersList);
-        notifyItemRangeInserted(start, users.size());
+        notifyItemRangeInserted(indexStart, usersList.size());
+
+        Log.i(UsersRecycleViewAdapter.class.getName(),"adapterusersADDED[" + users.size() +"]");
+
     }
 }

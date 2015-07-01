@@ -2,7 +2,7 @@ package ciriti.retrofitmockserver;
 
 import android.app.Application;
 
-import ciriti.retrofitmockserver.component.DaggerApiComponent;
+import ciriti.retrofitmockserver.component.DaggerApplicationComponent;
 import ciriti.retrofitmockserver.component.ParentApiComponent;
 import ciriti.retrofitmockserver.module.AppModule;
 
@@ -16,7 +16,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        apiComponent = DaggerApiComponent.builder()
+        apiComponent = DaggerApplicationComponent.builder()
                 .appModule(new AppModule(this))
                 .build();
     }

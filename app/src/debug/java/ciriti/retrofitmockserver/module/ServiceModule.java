@@ -16,7 +16,6 @@ import retrofit.RestAdapter;
 /**
  * Created by ciriti on 28/06/15.
  */
-@Singleton
 @Module(includes = {ApiModule.class})
 public class ServiceModule {
 
@@ -29,6 +28,7 @@ public class ServiceModule {
         return Endpoints.newFixedEndpoint(URL_ENDPOINT);
     }
 
+    @Singleton
     @Provides
     public ApiService provideStackExchangeService(RestAdapter restAdapter, SharedPreferences sharedPreferences, MockRestAdapter mockRestAdapter){
         if(sharedPreferences.getBoolean(HAS_MOCK, false)){
