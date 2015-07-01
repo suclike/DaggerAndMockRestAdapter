@@ -70,6 +70,95 @@ public interface ApplicationComponent {
 }
 
 ```
-A component is an interface annotated with @Component keyword; the method inject(...) tell to app where 
+A component is an interface annotated with @Component keyword; the method inject(...) tell to app where inject the component.
+
+Following the modules:
+
+* AppModule
+```java
+@Module
+@Singleton
+public class AppModule {
+    App app;
+    public AppModule(App app) {
+        this.app = app;
+    }
+    @Provides
+    @Singleton
+    public App provideApplication(){
+        return  app;
+    }
+}
+```
+* SharedPrefModule
+```java
+@Module
+@Singleton
+public class SharedPrefModule {
+    public static final String SHARED_P_NAME = "damr";
+    @Provides
+    public SharedPreferences providePreferences(App app){
+        return app.getSharedPreferences(SHARED_P_NAME, Context.MODE_PRIVATE);
+    }
+}
+```
+* ServiceModule
+```java
+public class ServiceModule {
+
+    ...
+
+    @Provides
+    Endpoint provideEndpoint(){
+        return Endpoints.newFixedEndpoint(URL_ENDPOINT);
+    }
+
+    @Singleton
+    @Provides
+    public ApiService provideStackExchangeService(RestAdapter restAdapter, SharedPreferences sharedPreferences, MockRestAdapter mockRestAdapter){
+        if(sharedPreferences.getBoolean(HAS_MOCK, false)){
+            return mockRestAdapter.create(ApiService.class, new MockService());
+        }
+        return restAdapter.create(ApiService.class);
+    }
+
+    @Provides
+    MockRestAdapter provideMockRestAdapter(RestAdapter restAdapter){
+        return MockRestAdapter.from(restAdapter);
+    }
+
+}
+```
+The ServiceModule will be different in live version, please take a glance to live ServiceModule.
+
+* ApiModule
+```java
+@Module
+@Singleton
+public class ApiModule {
+
+    ...
+
+    @Singleton
+    @Provides
+    public RestAdapter provideRestAdapter(OkHttpClient okHttpClient, Endpoint endpoint){
+        return new RestAdapter.Builder()
+                .setClient(new OkClient(okHttpClient))
+                .setEndpoint(endpoint)
+                .build();
+    }
+    @Singleton
+    @Provides
+    OkHttpClient provideClient(App app){
+        ...
+        return client;
+    }
+
+}
+```
+
+This is how it appears
+
+![Component](art/component.png)
 
 ## Under construction
