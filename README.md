@@ -11,4 +11,10 @@ Let's start!
 
 ##Dagger 2
 
+Dagger 2 is one of the best library ever created. It was built by Square and it is based on the [Dependency injection pattern](https://en.wikipedia.org/wiki/Dependency_injection).
+
+The purpose of this library is to create a Directed Acyclic object Graph (DAGger), at runtime, with the instances of your android application during the startup, this graph will be use to get objects inserted to use them across your app.
+
+In this way you can think to your app like a set of component who are built by other little specialized parts (the modules).
+
 ## Under construction
