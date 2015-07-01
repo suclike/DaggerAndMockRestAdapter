@@ -53,4 +53,8 @@ dependencies {
 First line is the plugin who assists in working with annotation processors in combination with Android Studio.
 Then we have to add the dependencies about dagger (library, compiler and supplementary annotations).
 
+### Implementation
+
+What we're creating is a component which contains few modules, in this sample we don't care about the Scope, we'll talk about it in the next article.
+
 ## Under construction
