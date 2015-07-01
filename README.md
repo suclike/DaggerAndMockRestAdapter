@@ -51,6 +51,6 @@ dependencies {
 
 ```
 First line is the plugin who assists in working with annotation processors in combination with Android Studio.
-Then we have to add the dependencies about dagger (librery and compiler)
+Then we have to add the dependencies about dagger (library, compiler and supplementary annotations).
 
 ## Under construction
