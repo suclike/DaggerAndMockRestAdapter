@@ -37,6 +37,20 @@ buildscript {
 repositories {
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
 }
+
+...
+
+dependencies {
+   ...
+    //Dagger
+    compile 'com.google.dagger:dagger:2.0.1'
+    compile 'com.google.dagger:dagger-compiler:2.0.1'
+    provided 'javax.annotation:jsr250-api:1.0'
+    ...
+}
+
 ```
 First line is the plugin who assists in working with annotation processors in combination with Android Studio.
+Then we have to add the dependencies about dagger (librery and compiler)
+
 ## Under construction
