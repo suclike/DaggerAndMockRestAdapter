@@ -161,4 +161,30 @@ This is how it appears
 
 ![Component](art/component.png)
 
-## Under construction
+The @Module and @Provide annotation are used to provide dependences.
+
+### Setup
+
+It's time to run! First of all we have to extends the application class of your app and the instantiate our component
+
+```java
+public class App extends Application {
+    ...
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        apiComponent = DaggerApplicationComponent.builder()
+                .appModule(new AppModule(this))
+                .build();
+    }
+    ...
+}
+```
+
+Now we can get our instance of service where previously we've declared the injection (FragUsers fragUsers)
+
+```java
+    @Inject
+    ApiService apiService;
+```
+
